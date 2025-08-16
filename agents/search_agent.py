@@ -10,7 +10,7 @@ class SearchAgent:
         self.api_key = os.getenv('SERPER_API_KEY')
         self.base_url = "https://google.serper.dev/search"
     
-    def search_urls(self, topic: str, max_results: int = 10) -> List[str]:
+    def search_urls(self, topic: str, max_results: int = 3) -> List[str]:
         """
         Search for URLs related to the given topic using SerperAPI
         

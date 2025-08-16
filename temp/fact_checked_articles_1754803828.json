@@ -1,0 +1,431 @@
+[
+  {
+    "url": "https://www.reddit.com/r/selfhosted/comments/138xaj3/looking_for_collaboration_platform_preferably/",
+    "title": "Looking for collaboration platform (preferably open source, alternative to Confluence)",
+    "content": "A place to share, discuss, discover, assist with, gain assistance for, and critique self-hosted alternatives to our favorite web apps, web services, and online tools. # Looking for collaboration platform (preferably open source, alternative to Confluence) I'm currently researching possible solutions for a collaboration/intranet platform, to be used by members of a local non profit organization. I'm currently an Atlassian consultant and to be honest, Confluence/Jira would be an almost perfect fit for our use case. However, since their investors demanded more revenue, they're not providing on premise versions anymore, only a clustered alternative which starts at $20k/yr. We can't even afford their non-profit offer for cloud, unfortunately. Features needed: - Customizable dashboard - Documentation/Wiki spaces - Generating multiple news feeds from multiple sources like newsletters and rss feeds - Collaborative editing (like in Google Docs / Confluence Synchrony) - Task and Ticket/Request management with multiple different workflows - Generating public Web content from private pages inside spaces, like Scroll Viewport I know, this is surely a lot to ask in terms of features, but if you happen to know multiple tools which could be integrated into each other to fit these requirements, I'm happy to hear the approach.",
+    "summary": "A non-profit organization seeks an open-source, self-hosted collaboration platform as a Confluence alternative, due to Confluence's high cost.  Required features include customizable dashboards, wiki spaces, news aggregation, collaborative editing, task management, and the ability to publish private content publicly.  The organization is open to integrating multiple tools to meet their needs.",
+    "claims": [
+      "A non-profit organization seeks an open-source, self-hosted collaboration platform as a Confluence alternative, due to Confluence's high cost",
+      "Required features include customizable dashboards, wiki spaces, news aggregation, collaborative editing, task management, and the ability to publish private content publicly",
+      "The organization is open to integrating multiple tools to meet their needs"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "A non-profit organization seeks an open-source, self-hosted collaboration platform as a Confluence alternative, due to Confluence's high cost",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "Required features include customizable dashboards, wiki spaces, news aggregation, collaborative editing, task management, and the ability to publish private content publicly",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "The organization is open to integrating multiple tools to meet their needs",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://nextcloud.com/",
+    "title": "Nextcloud - Open source content collaboration platform",
+    "content": "# Regain control ## Remote collaboration made easy - On premise or cloud - Customizable and scalable - No data leaks to third parties ### Trusted by thousands of organizations The most popular open source content collaboration platform for tens of millions of users at thousands of organizations across the globe Nextcloud Hub combines key Nextcloud products — Files, Talk, Groupware, Office and Assistant — into a single platform, optimizing the flow of collaboration. ## Nextcloud Hub - Team planning - Email made easy - Easy access, anywhere - Use your existing apps - Self-hosted online office - View and reply to comments - Chat or have a call while editing - docx/pptx/xlsx support - Context Write to create content based on existing documents and data - Context Chat to answer questions about your data - AI image generation and free prompt text generation - Accessible from the top toolbar and integrated in apps - Advanced business process automation application based on Windmill - Automated workflows with the basic, easy to use Flow app - Open Collaboration Services API for streamlined collaboration across services - Structured data management application Nextcloud Tables Nextcloud Files offers a self-hosted file storage and sync platform with powerful collaboration capabilities with desktop, mobile and web interfaces Nextcloud Talk delivers on premise, private audio/video conferencing and text chat through browser and mobile interfaces with integrated screen sharing and SIP integration. Nextcloud Groupware integrates Calendar, Contacts, Mail and other productivity features to help teams get their work done faster, easier and on your terms. Nextcloud Office is a powerful LibreOffice-based online office suite with collaborative editing, which supports all major document, spreadsheet and presentation file formats and works in all modern browsers. The first local AI assistant that is built into the Nextcloud Hub collaboration platform. Integrated across apps, it can generate content, answer questions about your data, summarize emails, translate, and much more. Nextcloud Flow is a set of intuitive automation components that allow organizations to automate and streamline internal workflows. Solutions ## Nextcloud use cases Nextcloud is committed to provide self hosted open source cloud file storage technology that is a perfect fit for the privacy and security of your enterprise ## Get in touch Reduce risk, improve remote team communication and minimize operational expenses with the leading open source cloud file storage and content collaboration platform. Contact us now to learn how Nextcloud can help you! ## Why Nextcloud? With over 400.000 deployments, Nextcloud is the most popular on premise content collaboration platform you can download. It scales from a Raspberry Pi with 2 users to globally distributed installations with tens of millions of users at major hosting providers. What makes it so popular? #### Productivity Enable productivity across any platform, whether in the office or on the road, to share, collaborate and communicate across organizational boundaries. Nextcloud provides transparent access to data on any storage. #### Control Protect, control and monitor data and communication across your company. Guarantee compliance with business and legal requirements. Keep your data on servers you own, at all times. Nothing leaks, not even metadata. #### Community Enjoy constant improvements from a thriving and transparent, entirely open-source community development model, free of lockins or paywalls. Enjoy the benefits of enterprise support when you need it. ## See it in action Nextcloud is designed to offer best in class productivity, and is developed at an impressive pace with new functionality becoming available every few months. We selected some videos to give you an idea of what we’re up to. ## Nextcloud events Nextcloud welcomes you to in-person events, conferences and trade shows as well as webinars and online meetings. HIPAA, GDPR and more ## Compliant by design Nextcloud products are designed with compliance in mind, providing extensive data policy enforcement, encryption, user management and auditing capabilities. ## Get in touch Reduce risk, improve citizen communication and reduce operational expenses with the leading content collaboration platform. Contact us now to learn how Nextcloud can help you! ## See how we stack up Compare Nextcloud with other solutions and see why it is the market leader in open source cloud file storage and collaboration platforms.",
+    "summary": "Nextcloud is a popular, self-hostable, open-source platform offering collaborative content management, including file storage, communication tools (chat, video conferencing), groupware (calendar, contacts, email), and an online office suite.  It prioritizes data privacy and security, scaling from small deployments to large enterprise solutions, and integrates AI features for enhanced productivity.",
+    "claims": [
+      "Nextcloud is a popular, self-hostable, open-source platform offering collaborative content management, including file storage, communication tools (chat, video conferencing), groupware (calendar, contacts, email), and an online office suite",
+      "It prioritizes data privacy and security, scaling from small deployments to large enterprise solutions, and integrates AI features for enhanced productivity"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "Nextcloud is a popular, self-hostable, open-source platform offering collaborative content management, including file storage, communication tools (chat, video conferencing), groupware (calendar, contacts, email), and an online office suite",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "It prioritizes data privacy and security, scaling from small deployments to large enterprise solutions, and integrates AI features for enhanced productivity",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.openproject.org/collaboration-software-features/team-collaboration/",
+    "title": "Project Collaboration Software Open Source - OpenProject",
+    "content": "# Project collaboration software to keep your team connected Collaborate independently of location and keep everyone up to date. ## Team collaboration software ### Stay informed and connected with your team OpenProject allows you to access all information in a web-based system. From meetings to a knowledge database, everything is organized and available at one central place. Communication between team members is easy, you can keep team members up to date, share information, and notify them about changes. Integrate a file storage to collaborate on and share project files. ## Communication ### Sharing information made easy OpenProject as a web-based project management software has different features to share information and keep all team members up to date with the latest project developments. ### Notifications In the notification center you keep informed about all changes and you can make updates yourself. ### Comments You can add a comment or notify team members via @notification. They will receive a notification about the updates. ### Files Include relevant files for your project directly via upload to a work package or in a separate documents module. ### Watcher Add yourself or other team members as a watcher to keep informed about changes in a work package. ## Internal comments ### Share context-sensitive information privately within selected team members. Add internal comments to work packages that are only visible to a specific subgroup of project members. Share important context or sensitive details without exposing them to the entire project team or external collaborators. This helps maintain confidentiality while improving collaboration within focused teams. ## File storages ### Integrate your file storages to easily share and collaborate on project files. Easily share and collaborate on project-related files with the Nextcloud or OneDrive/SharePoint integration (Enterprise add-on). Have all your files in one central project folder and automatically manage access for all team members. ## Share work packages ### Share work packages with users outside your project Manage access to project information exactly as you need it: Share work packages with members of your project or even with external users. You decide who has which access authorizations: View, Comment or Edit. With OpenProject’s Share feature, you comply with data protection and manage permissions exactly as you need them. ## Wiki ### Collaboratively create and communicate project information Collaboratively create and maintain a project wiki: Centralize documentation, guidelines, manuals and much more. You can easily insert, edit and format texts (e.g. copy and paste from Word), include tables, pictures, links, and other references to OpenProject (e.g. work package tables, Gantt charts or tickets). You have all changes at one sight, and export texts (e.g. in Markdown). Build a detailed navigation structure for easy access. ## Project Activity ### See at a glimpse all changes in the project In the Activity module you will see at a glance what has changed in the project. The work packages Activity tab displays all updates and comments to a work package to get a quick overview about the changes. ## Forum ### Discuss topics in a forum Create different forums in a project and discuss the topics with your team. Post questions and add your comments and document answers. ## Project news ### Distribute project news to your team Create and send around news to your project team about relevant updates in your project, comment on it and link to other relevant project information. News can be included directly on the project overview page to have an overview about the latest updates. ## Meetings ### Create and share meeting agenda and minutes Meetings in OpenProject allow you to manage and document your project meetings in one central place. Create single meetings or recurring meeting series to streamline team communication and save time. Add a work package directly to a meeting agenda and document and share meeting minutes with your meeting attendees. Include attachments, choose a presenter for each agenda item, review the meeting history and much more.",
+    "summary": "OpenProject is open-source project collaboration software offering centralized communication, file sharing, and access control features.  It facilitates team collaboration through notifications, comments, internal commenting for sensitive information, and a shared wiki for documentation.  Integration with file storage services like Nextcloud and OneDrive/SharePoint (Enterprise) enhances project file management.",
+    "claims": [
+      "OpenProject is open-source project collaboration software offering centralized communication, file sharing, and access control features",
+      "It facilitates team collaboration through notifications, comments, internal commenting for sensitive information, and a shared wiki for documentation",
+      "Integration with file storage services like Nextcloud and OneDrive/SharePoint (Enterprise) enhances project file management"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "OpenProject is open-source project collaboration software offering centralized communication, file sharing, and access control features",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "It facilitates team collaboration through notifications, comments, internal commenting for sensitive information, and a shared wiki for documentation",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "Integration with file storage services like Nextcloud and OneDrive/SharePoint (Enterprise) enhances project file management",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Open_collaboration",
+    "title": "Open collaboration - Wikipedia",
+    "content": "# Open collaboration **Open collaboration** refers to any \"system of innovation or production that relies on goal-oriented yet loosely coordinated participants who cooperate voluntarily to create a product (or service) of economic value, which is made freely available to contributors and noncontributors alike.\"[1] It is prominently observed in open source software, and has been initially described in Richard Stallman's GNU Manifesto,[2] as well as Eric S. Raymond's 1997 essay, The Cathedral and the Bazaar. Beyond open source software, open collaboration is also applied to the development of other types of mind or creative works, such as information provision in Internet forums, or the production of encyclopedic content in Wikipedia.[3] The organizing principle behind open collaboration is that of peer production.[4] Peer production communities are structured in an entirely decentralized manner, but differ from markets in that they function without price-based coordination, and often on the basis of volunteering only. Such communities are geared toward the production of openly accessible public or \"common\" goods, but differ from the State as well as charity groups in that they operate without a formal hierarchical structure, and rest solely on the construction of a rough, evolving consensus among participants.[5][6] ## Definition [edit]Riehle et al. define open collaboration as collaboration based on three principles of egalitarianism, meritocracy, and self-organization.[7] Levine and Piretula define open collaboration as \"any system of innovation or production that relies on goal-oriented yet loosely coordinated participants who interact to create a product (or service) of economic value, which they make available to contributors and noncontributors alike.\"[8][9] This definition captures multiple instances, all joined by similar principles. For example, all of the elements — goods of economic value, open access to contribute and consume, interaction and exchange, purposeful yet loosely coordinated work — are present in an open source software project, in Wikipedia, or in a user forum or community. They can also be present in a commercial website that is based on user-generated content. In all of these instances of open collaboration, anyone can contribute and anyone can freely partake in the fruits of sharing, which are produced by interacting participants who are loosely coordinated.[10]: 17 ## Academia [edit]An annual conference dedicated to the research and practice of open collaboration is the International Symposium on Open Collaboration (OpenSym, formerly WikiSym).[11] As per its website, the group defines open collaboration as \"collaboration that is egalitarian (everyone can join, no principled or artificial barriers to participation exist), meritocratic (decisions and status are merit-based rather than imposed) and self-organizing (processes adapt to people rather than people adapt to pre-defined processes).\"[12] Since 2011, a peer-reviewed academic journal, *The Journal of Peer Production* (JoPP), is dedicated to documenting and researching peer production processes. This academic community understands peer production \"as a mode of commons-based and oriented production in which participation is voluntary and predicated on the self-selection of tasks. Notable examples are the collaborative development of Free Software projects and of the Wikipedia online encyclopedia.\"[13] ## See also [edit]- Peer production or Commons-based peer production - Money-free market - Open-source model - Resource-based economy - Open knowledge ## References [edit]**^**Sheen S. Levine; Michael J. Prietula (2014). Open Collaboration for Innovation: Principles and Performance**^**Lakhani, Karim R., & von Hippel, Eric (2003). How Open Source Software Works: Free User to User Assistance.*Research Policy*, 32, 923–943 doi:10.2139/ssrn.290305**^**Yochai Benkler, Benjamin Mako Hill and Aaron Shaw (2015). Peer Production: A Form of Collective Intelligence. In Handbook of Collective Intelligence, edited by Thomas Malone and Michael Bernstein. MIT Press, Cambridge, Massachusetts.[1]**^**Yochai Benkler (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom. Yale University Press, New Haven, USA.[2]**^**Yochai Benkler (2002). Coase's Penguin, or, Linux and The Nature of the Firm. Yale law journal, pp. 369-446 [3]**^**Faraj, S., Jarvenpaa, S. L., & Majchrzak, Ann (2011). Knowledge Collaboration in Online Communities.*Organization Science*, 22(5), 1224-1239, doi:10.1287/orsc.1100.0614**^**Riehle, D.; Ellenberger, J.; Menahem, T.; Mikhailovski, B.; Natchetoi, Y.; Naveh, B.; Odenwald, T. (March 2009). \"Open Collaboration within Corporations Using Software Forges\" (PDF).*IEEE Software*.**26**(2): 52–58. doi:10.1109/MS.2009.44. ISSN 0740-7459.**^**Levine, Sheen S.; Prietula, Michael J. (2014). \"Open Collaboration for Innovation: Principles and Performance\".*Organization Science*.**25**(5): 1414–1433. arXiv:1406...",
+    "summary": "Open collaboration is a system of innovation relying on voluntary, loosely coordinated participants to create freely available products or services of economic value.  This decentralized model, exemplified by open-source software and Wikipedia, is characterized by peer production and principles of egalitarianism, meritocracy, and self-organization.  Key examples include open-source software development, online encyclopedias, and user-generated content platforms.",
+    "claims": [
+      "Open collaboration is a system of innovation relying on voluntary, loosely coordinated participants to create freely available products or services of economic value",
+      "This decentralized model, exemplified by open-source software and Wikipedia, is characterized by peer production and principles of egalitarianism, meritocracy, and self-organization",
+      "Key examples include open-source software development, online encyclopedias, and user-generated content platforms"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "Open collaboration is a system of innovation relying on voluntary, loosely coordinated participants to create freely available products or services of economic value",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "This decentralized model, exemplified by open-source software and Wikipedia, is characterized by peer production and principles of egalitarianism, meritocracy, and self-organization",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "Key examples include open-source software development, online encyclopedias, and user-generated content platforms",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.infoworld.com/article/2336117/9-ways-you-didnt-know-you-could-use-open-source.html",
+    "title": "8 open source projects taking collaboration to the next level",
+    "content": "Today's workplace is all about collaboration, and as more teams go remote, the need for innovative tools is stronger than ever. Here are eight open source projects that could help take your virtual collaborations from good to great. Open source projects are all about creativity and collaboration, and the process really shines when the project itself supports teamwork. Working together to create software for working together might seem very meta, but the results are quite tangible. Here are eight open source projects that can help boost your team’s collaboration, whether you are working in a distributed team, from your home office, or onsite in one of the newer hybrid workplaces. Jitsi The COVID-19 pandemic may or may not be over, but remote work and video calls are now a permanent part of our world. Jitsi is an open source project that supplies both the browser-side code and the server-side bridge, so you can host your own calls without relying on Zoom or Google Meet. You can run everything on your own hardware or support the project by signing up for the Jitsi service. Zulip Most teams also need a way to discuss their work in real-time and asynchronously, in which case Zulip could be the messaging platform you’ve been looking for. As an open source alternative to Slack, Zulip lets you control the code. It also has custom apps for all the major smartphone and desktop platforms. Mattermost Mattermost is another self-hosted messaging tool that supports team messaging, but in this case, it’s designed especially for software development. The project boasts a vibrant community, which has built out a good server for securely managing the message flow. What really sets Mattermost apart is its collection of software development playbooks with special features like checklists and coding retrospectives. Mattermost is also available as a web application and a mobile tool. Cyn.in Projects that need a shared space can turn to Cyn.in, which seeks to duplicate the shared access that you might experience in an IRL project lab or “war room.” The community edition offers data sharing features like a wiki and collaborative file repositories. It also offers enhanced tracking tools that can keep coworkers from stepping on each other’s toes by locking content and tracking access. Extra features like voting and search round out a complete system that can make a virtual office space even better than a physical one. Kolab Managing teams is what Kolab is all about. It organizes milestones, tracks projects, and keeps an eye on individual team members as everyone works toward the goal. Kolab also includes features for team blogging, project documentation, and group discussions. NextCloud The team at NextCloud gathered up some of the best open source projects for supporting group collaboration with email, chat, and calendaring. Then, they packaged them all into a stable distribution that anyone can install at home or in an office. Now, you can have your choice of the best applications for running an office or a household, while also controlling the back end. Group Office Creating documents, slide shows, or spreadsheets is the lifeblood of many office tasks. Group Office is a groupware platform that supports these basic tasks as well as many of the other important chores of office management. Features include timesheets, billing, and customer relations management. The basics are supported in the community edition, but the company also offers more professional services and custom development. GitLab Developers are familiar with using a version control system like Git to keep track of code and record version changes. GitLab is a GitHub alternative that makes it easier to collaborate and manage your code from a browser. It’s especially well suited to devops and includes features for managing security and compliance in a devops pipeline. The hosted version is available for a fee and there’s a community edition for running it locally.",
+    "summary": "The article highlights eight open-source projects enhancing team collaboration, including Jitsi for video conferencing, Zulip and Mattermost for messaging, Cyn.in for shared workspaces, and Kolab for project management.  These tools offer self-hosted alternatives to popular proprietary platforms, providing greater control and customization for remote and hybrid work environments.  NextCloud is also mentioned as a bundled suite integrating email, chat, and calendaring features.",
+    "claims": [
+      "The article highlights eight open-source projects enhancing team collaboration, including Jitsi for video conferencing, Zulip and Mattermost for messaging, Cyn",
+      "in for shared workspaces, and Kolab for project management",
+      "These tools offer self-hosted alternatives to popular proprietary platforms, providing greater control and customization for remote and hybrid work environments",
+      "NextCloud is also mentioned as a bundled suite integrating email, chat, and calendaring features"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "The article highlights eight open-source projects enhancing team collaboration, including Jitsi for video conferencing, Zulip and Mattermost for messaging, Cyn",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "in for shared workspaces, and Kolab for project management",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "These tools offer self-hosted alternatives to popular proprietary platforms, providing greater control and customization for remote and hybrid work environments",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "NextCloud is also mentioned as a bundled suite integrating email, chat, and calendaring features",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.exoplatform.com/team-collaboration-tools/",
+    "title": "Open Source Team Collaboration Tools for Business - Online Collaboration Tools",
+    "content": "## Used by ## Collaborative spaces Private workspaces, with an array of collaboration tools, to host your teams and manage your projects. ## Privacy Apply different visibility (listed/unlisted), membership (open / invitation only / validation only) and authentication (2FA) levels to spaces. ## Videoconferencing & chat Collaborate in real time by video conferencing or chat – within workspaces, ad-hoc rooms or 1:1. ## Activity Stream & @mentions Interact via the space’s activity stream and @mention your colleagues by name to get their attention. ## Document collaboration Easily share, organize and co-edit documents. ## Agenda & date polls Poll dates, plan collaborative events, invite participants and create ad-hoc videoconferencing links. ## Project management & Tasks Manage your projects and organize your team’s tasks. ## Members directory A dedicated space’s people directory to discover who participates and who manages the space, invite new members and manage their rights. ## External users Invite external users to collaborate in your space – they will only see the space to which they are invited. ## Digital Workplace Library ### Blog ### Blog Different types of intranet solutions",
+    "summary": "The article highlights open-source team collaboration tools offering features like private workspaces with adjustable privacy settings, real-time communication (video conferencing and chat), document co-editing, project management, and the ability to invite both internal and external users.  These tools facilitate streamlined collaboration and task management within dedicated spaces.",
+    "claims": [
+      "The article highlights open-source team collaboration tools offering features like private workspaces with adjustable privacy settings, real-time communication (video conferencing and chat), document co-editing, project management, and the ability to invite both internal and external users",
+      "These tools facilitate streamlined collaboration and task management within dedicated spaces"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "The article highlights open-source team collaboration tools offering features like private workspaces with adjustable privacy settings, real-time communication (video conferencing and chat), document co-editing, project management, and the ability to invite both internal and external users",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "These tools facilitate streamlined collaboration and task management within dedicated spaces",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://medium.com/@accretivetechnologygroup/open-source-software-community-collaboration-and-innovation-8bf6a39b5213",
+    "title": "Open Source Software: Community Collaboration and Innovation",
+    "content": "# Open Source Software: Community Collaboration and Innovation Open source software (OSS) has become a cornerstone of modern technology, driving innovation and collaboration across the globe. Unlike proprietary software, open source relies on a community-driven model where the source code is freely available, encouraging developers to contribute, modify, and distribute the software. This collaborative approach has not only transformed the way software is developed but has also fostered a culture of innovation that transcends traditional boundaries. # Evolution of Open Source Software: The roots of open source software can be traced back to the Free Software Movement initiated by Richard Stallman in the 1980s. Stallman advocated for the freedom to view, modify, and share software, leading to the development of the GNU project and the General Public License (GPL). The rise of the internet in the 1990s further accelerated the open source movement, providing a global platform for collaborative development. # Community-Driven Development: At the heart of open source lies a diverse and dynamic community of developers, designers, and enthusiasts who collaborate to create and enhance software. This collaborative model extends beyond geographical and organizational boundaries, creating a melting pot of ideas and expertise. Developers from different backgrounds and industries come together to contribute code, report issues, and improve documentation, collectively shaping the software’s evolution. # Key Principles of Open Source Development: **Transparency:**Open source projects operate with a high degree of transparency. The entire source code is accessible to anyone interested, allowing users to understand how the software works and providing developers with insights into potential improvements.**Collaboration:**Collaboration is a fundamental principle of open source development. Contributors collaborate through online platforms, version control systems, and communication channels, fostering a sense of shared ownership and collective responsibility.**Community Engagement:**Open source thrives on community engagement. Users not only have the freedom to use the software but are also encouraged to participate in discussions, report issues, and contribute code. This engagement enhances the software’s quality and adaptability.**Meritocracy:**Open source projects often operate on a meritocratic basis, where contributions are evaluated based on their merit rather than the contributor’s background or affiliation. This promotes a culture of inclusivity and values the skills and expertise each individual brings to the community. # Advantages of Open Source Software: **Innovation:**The open nature of the source code allows for continuous innovation. Developers can experiment, customize, and extend the software to meet diverse needs, driving rapid advancements in functionality and features.**Cost-Effectiveness:**Open source software is cost-effective, as it eliminates licensing fees and allows organizations to allocate resources towards customization and support rather than proprietary software costs.**Security:**Security is often enhanced in open source projects due to the transparent nature of the code. With a large community scrutinizing the codebase, vulnerabilities can be identified and addressed promptly.**Flexibility:**Open source software provides flexibility and freedom to adapt the software according to specific requirements. This flexibility is particularly valuable for organizations with unique needs that may not be met by off-the-shelf solutions. # Challenges in Open Source Development: **Sustainability**: Some open source projects face challenges in sustaining momentum. Maintaining a vibrant community and ensuring ongoing contributions are crucial for the longevity of a project.**Documentation and Usability:**While open source projects offer extensive documentation, some projects may struggle with user-friendly interfaces and comprehensive guides. Improving these aspects can enhance the accessibility of open source software. # Case Studies: Successful Open Source Projects: **Linux Kernel:**The Linux kernel is a prime example of successful open source collaboration. Developed by a global community, it powers a significant portion of the world’s servers and serves as the foundation for various operating systems.**Apache HTTP Server:**The Apache HTTP Server, often referred to as Apache, is a widely used open source web server. Its modular architecture and community-driven development have made it a reliable and scalable choice for hosting websites. # Future Trends and Conclusion: As technology continues to evolve, open source software remains a driving force behind innovation. The rise of artificial intelligence, blockchain, and edge computing has seen an influx of open source projects, showcasing the adaptability and resilience of the collaborative model. In conclusion, open source software stands as a testament to ...",
+    "summary": "Open source software (OSS) thrives on community collaboration, leveraging freely available source code to foster innovation and development.  This model, rooted in the Free Software Movement, emphasizes transparency, collaboration, and meritocracy, resulting in cost-effective and adaptable software solutions.  The collaborative nature drives continuous innovation and improvement through diverse contributions.",
+    "claims": [
+      "Open source software (OSS) thrives on community collaboration, leveraging freely available source code to foster innovation and development",
+      "This model, rooted in the Free Software Movement, emphasizes transparency, collaboration, and meritocracy, resulting in cost-effective and adaptable software solutions",
+      "The collaborative nature drives continuous innovation and improvement through diverse contributions"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "Open source software (OSS) thrives on community collaboration, leveraging freely available source code to foster innovation and development",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "This model, rooted in the Free Software Movement, emphasizes transparency, collaboration, and meritocracy, resulting in cost-effective and adaptable software solutions",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "The collaborative nature drives continuous innovation and improvement through diverse contributions",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.oliverwyman.com/our-expertise/insights/2019/mar/the-open-source-approach-to-collaboration.html",
+    "title": "The Open-Source Approach To Collaboration",
+    "content": "This article was originally published in *Contingencies*, March/April 2019 and first appeared on LinkedIn, January 2, 2019. The Github Octocat logo: Have you heard of Git? Github, maybe? Git was created by Linus Torvald in 2005 to support the development of Linux[i], which in 2016 ran an estimated 67 percent of web servers. Android runs on Linux. Facebook, Google, and Wikipedia all run on Linux.[ii] It is hard to understate the impact of Git, Github and the open-source revolution. To give another sense of the scope of this space, Github was recently purchased by Microsoft for $7.5 billion.[iii] There are 96 million projects—repositories, in Git lingo—and 31 million developers on Github[iv], myself included.[v] My purpose with this article is to share my experience with Git and open source, and encourage you to consider using it at your company to enhance collaboration. A year ago, I had only heard of Git. I hadn’t used it. Today I rely on it heavily at work for multiple projects daily. I use it to manage my homework between my Linux-enabled Chromebook and home PC. I can feel the cortisol flowing—that’s the stress hormone—any time I think of not having it as a tool. I credit two influences for my reliance on Git and passion for sharing the message: Rajesh Sahasrabuddhe and an open-source hackathon by Uptake[vi] in Chicago. Raj is a thought leader in our company and was one of the few people there using Git when I joined in 2017. He introduced me to Bitbucket. Raj is a Bitbucket evangelist because he understands the power of using it. It wasn’t easy at first. Using Git is very different from the typical way of managing project files on network drives. It took me a few months to build the intuition and start trusting the technology. Today, it is second nature and requires much less thinking than my prior approach. After using Git at the office, I felt like I could take on my first hackathon. I got word through the University of Chicago that an event was taking place. Uptake sent an open invite: Come to their office for free snacks (and beer) and make some contributions to open source. After a brief introduction to working with open source, we started looking for ways to contribute. It wasn’t hard: Go to the Github page of your favorite project and look through the issues page for something you’d like to work on. This feature alone is a game-changer. I found an open issue on an R package I use daily, lubridate. The task was to remove dependence on another package, stringr, so that lubridate could load faster and not have the risk of requiring separate code. My first submission was a partial solution, which as it turns out isn’t really that helpful, but it was all I had time to finish. I was really nervous—who am I to contribute to this important project? Figure 1 The project admins were kind and patient and educated me on how to be a better contributor. I worked with them through a few iterations and finally settled on a complete solution a few weeks later. I was so excited when my pull request was merged and my code became part of the software that is the go-to for working with dates for more than 2 million R users! I highly recommend attempting a contribution. You can see this whole process including our back-and-forth and the pull request on Github.[vii] I’d recommend taking a few minutes to skim it; it will give you a sense for how this works in the wild, and how it might work at your company. **Wait, What Just Happened ? ** Now, a moment for reflection. This is wild, right? I’m some random person, and I just logged on to Github, forked a copy of the code, made some changes, and requested the admins pull my code into a project that potentially 2 million people rely on for their code to work in businesses, at universities, and on personal computers. **How does this not break?** This is the power of open source. It is built around this need for things to work when they are built by people who don’t necessarily know each other or the history of the project. I didn’t review all the code in the project. I just found the specific spots that needed work. This is why open source is taking over. It removes every barrier to collaboration. My code will work because I made changes to a separate copy of the code; before my changes were even reviewed by a person, over a thousand automated tests were run to ensure I didn’t break or change anything I wasn’t supposed to. It took me a few tries to get past that part. Then it was reviewed by an expert who made suggestions using the Github platform. We went back and forth, and once it looked good and passed all the tests, it was easy to bring the changes in without any ambiguity or mistakes, thanks to Git. **Collaborating the Open-Source Wa y** Keep the above story in mind as I discuss how collaboration works with open source. - Code is stored online (remote) in a repository (repo) with one or more users set up as owners. This is typically on Github or Bitbucket. These can be ...",
+    "summary": "The article advocates for using Git and open-source collaboration tools, highlighting their transformative impact on project management.  The author details their personal experience learning Git, emphasizing its efficiency and ease of use compared to traditional methods, and encourages broader adoption within companies.  Their participation in an open-source hackathon further illustrates the collaborative benefits of this approach.",
+    "claims": [
+      "The article advocates for using Git and open-source collaboration tools, highlighting their transformative impact on project management",
+      "The author details their personal experience learning Git, emphasizing its efficiency and ease of use compared to traditional methods, and encourages broader adoption within companies",
+      "Their participation in an open-source hackathon further illustrates the collaborative benefits of this approach"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "The article advocates for using Git and open-source collaboration tools, highlighting their transformative impact on project management",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "The author details their personal experience learning Git, emphasizing its efficiency and ease of use compared to traditional methods, and encourages broader adoption within companies",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "Their participation in an open-source hackathon further illustrates the collaborative benefits of this approach",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.onlyoffice.com/groups.aspx",
+    "title": "Collaboration platform for your team",
+    "content": "Build your own collaboration platform ONLYOFFICE Groups, free and open-source online collaboration platform Released under Apache license Get it now Create your own productivity platform to make it fit a specific industry ONLYOFFICE Groups offers a wide range of modules that you can turn on/off to suit your needs. Documents Store and organize business documentation. Share files and manage access levels for users and groups. Multi-format media player included. Learn more Take a quick screenshot tour Mail Keep your mailbox organized: connect multiple email accounts, manage and tag messages. Create signatures and make use of the template constructor. Access message history, contacts, and files from anywhere. Learn more Take a quick screenshot tour CRM A complete toolkit for sales managers: optimize your business workflow from lead generation to order fulfillment. Create reports and monitor your team's progress. Learn more Take a quick screenshot tour Projects Organize your team for success: create projects, prioritize tasks, and set deadlines. Build Gantt charts, generate reports, track time to analyze your team’s productivity, and make changes in a few clicks. Learn more Take a quick screenshot tour Calendar Manage your time wisely: create a personal or team timetable, synchronize it with third-party calendars, add different event types, and set reminders to never miss a thing. Learn more Take a quick screenshot tour Community Improve team communication: write blogs and forums, and exchange messages in chat. Create bookmarks for easy information management. Learn more Take a quick screenshot tour Use together with ONLYOFFICE Docs Create, edit, and co-author text documents, spreadsheets, and presentations stored in Documents module. Work on project documentation. Make attachments to mail messages. Organize mass mailing, and more with ONLYOFFICE Docs. Highest compatibility with MS Office formats. Learn more Customize to your needs Integration Connect your collaboration platform with external services for logging, signing, authentication, or storage. Find the apps you need Branding options Personalize your collaboration platform with built-in color themes, replace logos, titles, links. Powerful API Create custom modules and tools and easily connect them to the collaboration platform. Visit API docs Open Source It’s not just about being free of charge, it means everyone can freely contribute to the project, extend its functionality, and customize to meet their team requirements. Open on GitHub 1M+ installations 1K+ stars Easily install and configure Easy start Deploy ONLYOFFICE Groups locally using various installation options: .deb/.rpm/.exe, Docker, etc. Data security and control Two-factor authentication. Flexible access rights. Data backup and restore, logging and monitoring tools, and more. Learn more Administration Manage ONLYOFFICE Groups using an intuitive admin area. Customize and configure with ease. left right Close",
+    "summary": "ONLYOFFICE Groups is a free, open-source online collaboration platform offering modules for document management, email, CRM, project management, calendar, and communication.  Highly customizable with branding options, API access, and integrations, it prioritizes data security and control with features like two-factor authentication.  The platform is easily installed and deployable, boasting high compatibility with MS Office formats.",
+    "claims": [
+      "ONLYOFFICE Groups is a free, open-source online collaboration platform offering modules for document management, email, CRM, project management, calendar, and communication",
+      "Highly customizable with branding options, API access, and integrations, it prioritizes data security and control with features like two-factor authentication",
+      "The platform is easily installed and deployable, boasting high compatibility with MS Office formats"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "ONLYOFFICE Groups is a free, open-source online collaboration platform offering modules for document management, email, CRM, project management, calendar, and communication",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "Highly customizable with branding options, API access, and integrations, it prioritizes data security and control with features like two-factor authentication",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "The platform is easily installed and deployable, boasting high compatibility with MS Office formats",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  },
+  {
+    "url": "https://www.linkedin.com/pulse/guide-open-source-collaboration-beginners-marny-lopez-xp4we",
+    "title": "A Guide to Open Source Collaboration for Beginners",
+    "content": "# A Guide to Open Source Collaboration for Beginners Open source collaboration is the process of working together with other developers to create and maintain open source software. Open source software is software that has its source code freely available for anyone to view, modify, and distribute. This makes it possible for anyone to contribute to the development of open source software, regardless of their skill level or location. Open source collaboration is important because it allows developers to pool their skills and resources to create software that is better than any one individual could create on their own. It also allows developers to learn from each other and to share their knowledge with the community. There are many benefits to contributing to open source projects. Some of the benefits include: If you are new to open source collaboration, don't worry! There are many resources available to help you get started. In this blog post, we will provide a beginner's guide to open source collaboration. We will cover everything from finding a project to contribute to making your first contribution and collaborating with other contributors. ## Finding a project to contribute to Once you have decided that you want to contribute to an open source project, the next step is to find a project that you are interested in and that you have the skills to contribute to. There are a number of ways to find open source projects to contribute to. One way is to browse open source directories such as GitHub Explore, GitLab Explore, and Open Source Friday. These websites list thousands of open source projects, so you are sure to find something that interests you. Another way to find open source projects to contribute to is to look for projects that you use on a regular basis. For example, if you use the Linux operating system, you could look for Linux-related projects to contribute to. Or, if you use a particular programming language, you could look for projects that use that language. Once you have found a few projects that you are interested in, you should take some time to learn more about each project. Read the project's documentation, browse the code, and see what kind of issues the project is facing. This will help you to determine which project is the best fit for you. When choosing a project to contribute to, it is important to consider the following factors: ### Looking for beginner-friendly issues Once you have chosen a project to contribute to, you should look for beginner-friendly issues to work on. Beginner-friendly issues are typically small and well-defined. This makes them a good choice for beginners because they are more likely to be able to complete them successfully. To find beginner-friendly issues, you can look for issues that are labeled with the \"good first issue\" tag. You can also search for issues that are marked as \"easy\" or \"low priority.\" If you are having trouble finding beginner-friendly issues, you can ask for help from the project's maintainers. They will be able to point you in the right direction. ## Making your first contribution Once you have found a beginner-friendly issue to work on, you are ready to make your first contribution to an open source project! Here are the steps involved in making your first contribution: ## Recommended by LinkedIn ### Tips for making your first contribution Here are a few tips for making your first contribution to an open source project: ## Collaborating with other contributors Open source projects are all about collaboration. When you contribute to an open source project, you are working with other developers to create and maintain the project's software. This means that it is important to be able to collaborate effectively with others. Here are a few tips for collaborating effectively with other contributors: Help other contributors with their issues. If you see that another contributor is having trouble with an issue, offer to help them. This could involve answering questions, providing feedback, or helping them to debug their code. By following these tips, you can collaborate effectively with other contributors and help to create better open source software. ## Tips for successful open source collaboration Here are some tips for successful open source collaboration: Open source collaboration has many benefits, both for individual developers and for the software development community as a whole. For individual developers, open source collaboration provides an opportunity to: For the software development community as a whole, open source collaboration leads to: Open source collaboration is essential for the future of software development. By working together, developers can create better software that benefits everyone. I encourage you to get involved in open source collaboration today. There are many projects that need your help, and there is a welcoming community of contributors who are happy to help newcomers.",
+    "summary": "This guide introduces open-source collaboration, explaining how to find beginner-friendly projects on platforms like GitHub and GitLab.  It emphasizes identifying projects matching one's skillset and looking for issues tagged as \"good first issue\" to ease initial contributions.  The article aims to help newcomers get involved in open-source development.",
+    "claims": [
+      "This guide introduces open-source collaboration, explaining how to find beginner-friendly projects on platforms like GitHub and GitLab",
+      "It emphasizes identifying projects matching one's skillset and looking for issues tagged as \"good first issue\" to ease initial contributions",
+      "The article aims to help newcomers get involved in open-source development"
+    ],
+    "fact_check_results": [
+      {
+        "claim": "This guide introduces open-source collaboration, explaining how to find beginner-friendly projects on platforms like GitHub and GitLab",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "It emphasizes identifying projects matching one's skillset and looking for issues tagged as \"good first issue\" to ease initial contributions",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      },
+      {
+        "claim": "The article aims to help newcomers get involved in open-source development",
+        "status": "Unsure",
+        "rating": "No fact-check found",
+        "publisher": "None",
+        "publisher_site": "",
+        "review_url": "",
+        "review_date": "",
+        "confidence": "low"
+      }
+    ],
+    "overall_status": "Unsure"
+  }
+]

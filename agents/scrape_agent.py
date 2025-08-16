@@ -2,6 +2,10 @@ import trafilatura
 from typing import List, Dict
 import streamlit as st
 import time
+import json
+import os
+import tempfile
+
 
 class ScrapeAgent:
     """Agent responsible for scraping content from URLs using trafilatura"""
@@ -9,6 +13,9 @@ class ScrapeAgent:
     def __init__(self, max_content_length: int = 5000, delay_between_requests: float = 1.0):
         self.max_content_length = max_content_length
         self.delay_between_requests = delay_between_requests
+        # Create temp folder at project root if it doesn't exist
+        self.temp_dir = os.path.join(os.getcwd(), 'temp')
+        os.makedirs(self.temp_dir, exist_ok=True)
     
     def scrape_urls(self, urls: List[str]) -> List[Dict[str, str]]:
         """
@@ -18,7 +25,7 @@ class ScrapeAgent:
             urls (List[str]): List of URLs to scrape
             
         Returns:
-            List[Dict[str, str]]: List of scraped articles with URL and content
+            List[Dict[str, str]]: List of scraped articles with URL, content, and title
         """
         scraped_articles = []
         total_urls = len(urls)
@@ -38,10 +45,16 @@ class ScrapeAgent:
                         # Clean and limit content
                         cleaned_text = self._clean_content(extracted_text)
                         if cleaned_text:
-                            scraped_articles.append({
+                            # Extract metadata including title
+                            metadata = self.get_article_metadata(url)
+                            title = metadata.get('title', self._extract_title_from_url(url))
+                            
+                            article_data = {
                                 'url': url,
-                                'content': cleaned_text
-                            })
+                                'content': cleaned_text,
+                                'title': title
+                            }
+                            scraped_articles.append(article_data)
                             st.success(f"✅ Successfully scraped: {url}")
                         else:
                             st.warning(f"⚠️ No usable content found: {url}")
@@ -65,6 +78,18 @@ class ScrapeAgent:
         status_text.empty()
         
         st.success(f"Scraping complete! Successfully scraped {len(scraped_articles)} out of {total_urls} URLs")
+
+        # Save results to JSON file in temp folder
+        if scraped_articles:
+            timestamp = int(time.time())
+            json_filename = f"scraped_articles_{timestamp}.json"
+            json_filepath = os.path.join(self.temp_dir, json_filename)
+            
+            with open(json_filepath, 'w', encoding='utf-8') as f:
+                json.dump(scraped_articles, f, ensure_ascii=False, indent=2)
+            
+            st.info(f"🔖 Scraped data saved to: `{json_filepath}`")
+
         return scraped_articles
     
     def _clean_content(self, text: str) -> str:
@@ -92,6 +117,28 @@ class ScrapeAgent:
             cleaned = cleaned[:self.max_content_length] + "..."
         
         return cleaned
+    
+    def _extract_title_from_url(self, url: str) -> str:
+        """
+        Extract a readable title from URL as fallback
+        
+        Args:
+            url (str): URL to extract title from
+            
+        Returns:
+            str: Extracted title
+        """
+        try:
+            # Try to get the last part of the URL path
+            path = url.split('/')[-1]
+            if path and '.' not in path:
+                return path.replace('-', ' ').replace('_', ' ').title()
+            else:
+                # Fallback to domain name
+                domain = url.split('//')[1].split('/')[0]
+                return domain.replace('www.', '').title()
+        except:
+            return "Untitled"
     
     def get_article_metadata(self, url: str) -> Dict[str, str]:
         """
