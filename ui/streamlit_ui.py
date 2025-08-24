@@ -4,6 +4,7 @@ from datetime import datetime
 import json
 from database.db_manager import DatabaseManager
 from crewai_workflow import CrewAIWorkflow
+from agents.notion_publisher import NotionPublisher
 
 class StreamlitUI:
     """Handles all Streamlit UI components and user interactions"""
@@ -11,6 +12,7 @@ class StreamlitUI:
     def __init__(self):
         self.db_manager = DatabaseManager()
         self.workflow = CrewAIWorkflow()
+        self.notion_publisher = NotionPublisher()
         self.setup_page_config()
         self.init_session_state()
     
@@ -143,6 +145,10 @@ class StreamlitUI:
                 saved_count = self.db_manager.save_articles_batch(results)
                 session_id = self.db_manager.save_analysis_session(topic, results)
                 
+                # Publish to Notion if enabled
+                if self.notion_publisher.is_enabled():
+                    self.publish_results_to_notion(topic, results)
+                
                 # Update session state
                 st.session_state.results = results
                 st.session_state.is_processing = False
@@ -163,6 +169,58 @@ class StreamlitUI:
         except Exception as e:
             st.error(f"An error occurred during analysis: {str(e)}")
             st.session_state.is_processing = False
+    
+    def publish_results_to_notion(self, topic: str, results: List[Dict[str, Any]]):
+        """
+        Publish analysis results to Notion
+        
+        Args:
+            topic (str): The analysis topic
+            results (List[Dict[str, Any]]): The analysis results
+        """
+        import os
+        
+        try:
+            # Create or get database ID
+            run_name = f"{topic}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            
+            # Check if we should create a new database each run
+            if self.notion_publisher.create_db_each_run:
+                database_id = self.notion_publisher.create_run_database(run_name)
+                if not database_id:
+                    st.error("Failed to create Notion database")
+                    return
+            else:
+                # Use existing database ID from environment
+                database_id = os.getenv('NOTION_DATABASE_ID')
+                if not database_id:
+                    st.error("NOTION_DATABASE_ID not set and NOTION_CREATE_DB_EACH_RUN is false")
+                    return
+            
+            # Publish each result
+            published_count = 0
+            with st.spinner("📤 Publishing results to Notion..."):
+                for item in results:
+                    # Add analysis date if not present
+                    if 'analysis_date' not in item:
+                        item['analysis_date'] = datetime.now().strftime('%Y-%m-%d')
+                    
+                    if self.notion_publisher.publish_to_notion(item, database_id):
+                        published_count += 1
+                    else:
+                        st.warning(f"Failed to publish item: {item.get('title', 'Untitled')}")
+            
+            # Show success message with Notion URL
+            if published_count > 0:
+                notion_url = self.notion_publisher.get_database_url(database_id)
+                st.success(f"✅ Published {published_count}/{len(results)} results to Notion")
+                st.info(f"📊 **NOTION_RUN_URL:** {notion_url}")
+                
+                # Store the URL in session state for display
+                st.session_state.notion_run_url = notion_url
+                
+        except Exception as e:
+            st.error(f"Error publishing to Notion: {str(e)}")
     
     def render_results(self):
         """Render the analysis results"""
@@ -206,6 +264,10 @@ class StreamlitUI:
             successful_count = sum(1 for r in st.session_state.results 
                                  if r.get('summary') != 'Analysis failed - unable to process content')
             st.metric("Successful", successful_count)
+        
+        # Display Notion URL if available
+        if hasattr(st.session_state, 'notion_run_url') and st.session_state.notion_run_url:
+            st.info(f"📊 **View results in Notion:** [Click here]({st.session_state.notion_run_url})")
     
     def render_articles_list(self):
         """Render the list of analyzed articles"""
