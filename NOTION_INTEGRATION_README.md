@@ -12,8 +12,8 @@ NOTION_TOKEN=your_notion_integration_token_here
 NOTION_PARENT_PAGE_ID=your_parent_page_id_here
 
 # Optional configuration
-PUBLISH_TO_NOTION=false                    # Set to 'true' to enable Notion publishing
-NOTION_CREATE_DB_EACH_RUN=false           # Set to 'true' to create new DB each run
+PUBLISH_TO_NOTION=ture                    # Set to 'true' to enable Notion publishing
+NOTION_CREATE_DB_EACH_RUN=true           # Set to 'true' to create new DB each run
 NOTION_DATABASE_ID=existing_db_id_here    # Use existing DB if not creating new ones
 ```
 

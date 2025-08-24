@@ -214,7 +214,7 @@ class StreamlitUI:
             if published_count > 0:
                 notion_url = self.notion_publisher.get_database_url(database_id)
                 st.success(f"✅ Published {published_count}/{len(results)} results to Notion")
-                st.info(f"📊 **NOTION_RUN_URL:** {notion_url}")
+                st.info(f"📊 **View results in Notion:** [Click here]({notion_url})")
                 
                 # Store the URL in session state for display
                 st.session_state.notion_run_url = notion_url
@@ -267,7 +267,7 @@ class StreamlitUI:
         
         # Display Notion URL if available
         if hasattr(st.session_state, 'notion_run_url') and st.session_state.notion_run_url:
-            st.info(f"📊 **View results in Notion:** [Click here]({st.session_state.notion_run_url})")
+            st.success(f"📊 **View results in Notion:** [Click here]({st.session_state.notion_run_url})")
     
     def render_articles_list(self):
         """Render the list of analyzed articles"""

@@ -3,7 +3,20 @@ import time
 from typing import Dict, Any, Optional
 from notion_client import Client
 from notion_client.errors import APIResponseError
-import streamlit as st
+
+# Try to import streamlit, but don't fail if not available
+try:
+    import streamlit as st
+    STREAMLIT_AVAILABLE = True
+except ImportError:
+    STREAMLIT_AVAILABLE = False
+    # Create a mock st object for when not in Streamlit context
+    class MockStreamlit:
+        def info(self, msg): print(f"INFO: {msg}")
+        def success(self, msg): print(f"SUCCESS: {msg}")
+        def error(self, msg): print(f"ERROR: {msg}")
+        def warning(self, msg): print(f"WARNING: {msg}")
+    st = MockStreamlit()
 
 class NotionPublisher:
     """Agent responsible for publishing analysis results to Notion"""
@@ -15,11 +28,23 @@ class NotionPublisher:
         self.create_db_each_run = os.getenv('NOTION_CREATE_DB_EACH_RUN', 'false').lower() == 'true'
         
         if self.token and self.parent_page_id:
-            self.client = Client(auth=self.token)
+            try:
+                self.client = Client(auth=self.token)
+                if STREAMLIT_AVAILABLE:
+                    st.success("✅ Notion integration ready")
+            except Exception as e:
+                if STREAMLIT_AVAILABLE:
+                    st.error(f"❌ Failed to initialize Notion client: {str(e)}")
+                else:
+                    print(f"ERROR: Failed to initialize Notion client: {str(e)}")
+                self.client = None
         else:
             self.client = None
             if self.publish_to_notion:
-                st.warning("Notion integration disabled: Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID")
+                if STREAMLIT_AVAILABLE:
+                    st.warning("⚠️ Notion integration disabled: Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID")
+                else:
+                    print(f"WARNING: Notion integration disabled: Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID")
     
     def create_run_database(self, run_name: str) -> Optional[str]:
         """
@@ -31,7 +56,17 @@ class NotionPublisher:
         Returns:
             Optional[str]: Database ID if successful, None otherwise
         """
+        if STREAMLIT_AVAILABLE:
+            st.info(f"🔍 Creating Notion database for run: {run_name}")
+        else:
+            print(f"INFO: Creating Notion database for run: {run_name}")
+        
         if not self.client or not self.parent_page_id:
+            error_msg = f"❌ Cannot create database: client={'✅ Ready' if self.client else '❌ Not ready'}, parent_page_id={'✅ Set' if self.parent_page_id else '❌ Missing'}"
+            if STREAMLIT_AVAILABLE:
+                st.error(error_msg)
+            else:
+                print(f"ERROR: {error_msg}")
             return None
             
         try:
@@ -80,19 +115,34 @@ class NotionPublisher:
                 is_inline=False  # This makes it a full-page database
             )
             
-            st.success(f"✅ Created Notion database: {database['title'][0]['text']['content']}")
+            if STREAMLIT_AVAILABLE:
+                st.success(f"✅ Created Notion database: {database['title'][0]['text']['content']}")
+            else:
+                print(f"SUCCESS: Created Notion database: {database['title'][0]['text']['content']}")
             return database['id']
             
         except APIResponseError as e:
             if e.code == "rate_limited":
-                st.warning("Rate limited by Notion API. Retrying in 1 second...")
+                warning_msg = "Rate limited by Notion API. Retrying in 1 second..."
+                if STREAMLIT_AVAILABLE:
+                    st.warning(warning_msg)
+                else:
+                    print(f"WARNING: {warning_msg}")
                 time.sleep(1)
                 return self.create_run_database(run_name)  # Retry once
             else:
-                st.error(f"Error creating Notion database: {e.message}")
+                error_msg = f"Error creating Notion database: {e.message}"
+                if STREAMLIT_AVAILABLE:
+                    st.error(error_msg)
+                else:
+                    print(f"ERROR: {error_msg}")
                 return None
         except Exception as e:
-            st.error(f"Unexpected error creating Notion database: {str(e)}")
+            error_msg = f"Unexpected error creating Notion database: {str(e)}"
+            if STREAMLIT_AVAILABLE:
+                st.error(error_msg)
+            else:
+                print(f"ERROR: {error_msg}")
             return None
     
     def publish_to_notion(self, item: Dict[str, Any], database_id: str) -> bool:
@@ -113,31 +163,31 @@ class NotionPublisher:
             # Prepare the page properties
             properties = {
                 "Title": {
-                    "title": [{"text": {"content": item.get('title', 'Untitled')[:2000]}}]
+                    "title": [{"text": {"content": str(item.get('title', 'Untitled'))[:2000]}}]
                 },
                 "URL": {
-                    "url": item.get('url', '')
+                    "url": str(item.get('url', ''))
                 },
                 "Content": {
-                    "rich_text": [{"text": {"content": item.get('content', '')[:2000]}}]
+                    "rich_text": [{"text": {"content": str(item.get('content', ''))[:2000]}}]
                 },
                 "Summary": {
-                    "rich_text": [{"text": {"content": item.get('summary', '')[:2000]}}]
+                    "rich_text": [{"text": {"content": str(item.get('summary', ''))[:2000]}}]
                 },
                 "Claims": {
                     "rich_text": [{"text": {"content": str(item.get('key_claims', []))[:2000]}}]
                 },
                 "Fact Status": {
-                    "select": {"name": item.get('fact_myth_status', 'Unclear')}
+                    "select": {"name": str(item.get('fact_myth_status', 'Unclear'))}
                 },
                 "Classification": {
-                    "select": {"name": item.get('classification', 'Other')}
+                    "select": {"name": str(item.get('classification', 'Other'))}
                 },
                 "Confidence": {
-                    "select": {"name": item.get('confidence', 'Medium')}
+                    "select": {"name": str(item.get('confidence', 'Medium'))}
                 },
                 "Analysis Date": {
-                    "date": {"start": item.get('analysis_date', time.strftime('%Y-%m-%d'))}
+                    "date": {"start": str(item.get('analysis_date', time.strftime('%Y-%m-%d')))}
                 }
             }
             
@@ -151,14 +201,26 @@ class NotionPublisher:
             
         except APIResponseError as e:
             if e.code == "rate_limited":
-                st.warning("Rate limited by Notion API. Retrying in 1 second...")
+                warning_msg = "Rate limited by Notion API. Retrying in 1 second..."
+                if STREAMLIT_AVAILABLE:
+                    st.warning(warning_msg)
+                else:
+                    print(f"WARNING: {warning_msg}")
                 time.sleep(1)
                 return self.publish_to_notion(item, database_id)  # Retry once
             else:
-                st.error(f"Error publishing to Notion: {e.message}")
+                error_msg = f"Error publishing to Notion: {e.message}"
+                if STREAMLIT_AVAILABLE:
+                    st.error(error_msg)
+                else:
+                    print(f"ERROR: {error_msg}")
                 return False
         except Exception as e:
-            st.error(f"Unexpected error publishing to Notion: {str(e)}")
+            error_msg = f"Unexpected error publishing to Notion: {str(e)}"
+            if STREAMLIT_AVAILABLE:
+                st.error(error_msg)
+            else:
+                print(f"ERROR: {error_msg}")
             return False
     
     def get_database_url(self, database_id: str) -> str:
