@@ -129,7 +129,7 @@ class AnalysisAgent:
     
     def _classify_single_article(self, article: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Classify and analyze a single article
+        Classify and analyze a single article based on its summary and fact-check results
         
         Args:
             article (Dict[str, Any]): Article with summary and fact-check results
@@ -140,12 +140,51 @@ class AnalysisAgent:
         # Create classification prompt
         prompt = self._create_classification_prompt(article)
         
-        # Get response from Gemini
-        response = self.model.generate_content(prompt)
+        # Try up to 3 times to get a valid response
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                # Get response from Gemini
+                st.info(f"Requesting classification from Gemini (attempt {attempt + 1}/{max_retries}) for: {article['url']}")
+                response = self.model.generate_content(prompt)
+                st.success(f"Successfully received response from Gemini for: {article['url']}")
+                break
+            except Exception as e:
+                if attempt == max_retries - 1:  # Last attempt
+                    st.error(f"Failed to get response from Gemini for {article['url']} after {max_retries} attempts: {str(e)}")
+                    return self._create_fallback_result(article)
+                else:
+                    st.warning(f"Attempt {attempt + 1} failed for {article['url']}, retrying...")
+                    time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
         
-        # Parse JSON response
+        # Clean and parse JSON response
         try:
-            analysis = json.loads(response.text)
+            # Check if response is empty
+            if not response.text or response.text.strip() == "":
+                st.warning(f"Empty response from Gemini for {article['url']}")
+                return self._create_fallback_result(article)
+            
+            # Clean the response text to extract JSON
+            cleaned_response = self._extract_json_from_response(response.text)
+            
+            # Check if cleaned response is empty
+            if not cleaned_response or cleaned_response.strip() == "":
+                st.warning(f"Could not extract JSON content from response for {article['url']}")
+                st.info(f"Raw response: {response.text[:200]}...")
+                return self._create_fallback_result(article)
+            
+            # Validate JSON structure before parsing
+            if not self._validate_json_structure(cleaned_response):
+                st.warning(f"Invalid JSON structure in response for {article['url']}")
+                st.info(f"Cleaned response: {cleaned_response[:200]}...")
+                return self._create_fallback_result(article)
+            
+            analysis = json.loads(cleaned_response)
+            
+            # Validate that required fields are present
+            if not self._validate_analysis_fields(analysis):
+                st.warning(f"Missing required fields in analysis for {article['url']}")
+                analysis = self._fix_missing_analysis_fields(analysis)
             
             return {
                 'url': article['url'],
@@ -165,6 +204,8 @@ class AnalysisAgent:
             
         except json.JSONDecodeError as e:
             st.warning(f"Failed to parse JSON response for {article['url']}: {str(e)}")
+            st.info(f"Raw response: {response.text[:200]}...")
+            st.info(f"Cleaned response: {cleaned_response[:200]}...")
             return self._create_fallback_result(article)
     
     def _create_classification_prompt(self, article: Dict[str, Any]) -> str:
@@ -187,7 +228,8 @@ class AnalysisAgent:
                 fact_check_info += f"   Publisher: {result['publisher']}\n\n"
         
         return f"""
-        Analyze and classify the following article based on its content, summary, and fact-check results.
+        Analyze and classify the following article based on its SUMMARY and fact-check results.
+        DO NOT analyze the full content - focus only on the summary provided.
         
         Article URL: {article['url']}
         Title: {article.get('title', 'Untitled')}
@@ -196,7 +238,7 @@ class AnalysisAgent:
         
         {fact_check_info}
         
-        Please provide the following analysis in JSON format:
+        Please provide the following analysis in EXACT JSON format:
         {{
             "classification": "One of these categories: {', '.join(self.categories)}",
             "confidence": "One of: high, medium, low",
@@ -207,15 +249,109 @@ class AnalysisAgent:
         }}
         
         Guidelines:
-        - Classify based on the main topic/theme of the article
+        - Classify based on the main topic/theme of the SUMMARY only
         - Consider the fact-check results when assessing credibility
         - Provide confidence level based on clarity and verifiability of claims
-        - Identify key themes that appear in the content
-        - Assess overall sentiment and tone
+        - Identify key themes that appear in the summary
+        - Assess overall sentiment and tone from the summary
         - Provide a credibility score between 0.0 (low) and 1.0 (high)
         
-        Respond only with valid JSON.
+        CRITICAL: 
+        - Respond ONLY with valid JSON
+        - Do not include any markdown formatting, explanations, or additional text
+        - Ensure all field values are properly quoted and formatted
+        - Use double quotes for strings, not single quotes
+        - Ensure arrays and objects are properly closed
         """
+    
+    def _extract_json_from_response(self, response_text: str) -> str:
+        """
+        Extract JSON content from Gemini response text
+        
+        Args:
+            response_text (str): Raw response from Gemini
+            
+        Returns:
+            str: Cleaned JSON string
+        """
+        # Remove markdown code blocks if present
+        if '```json' in response_text:
+            start = response_text.find('```json') + 7
+            end = response_text.find('```', start)
+            if end != -1:
+                return response_text[start:end].strip()
+        
+        # Remove markdown code blocks without language specifier
+        if '```' in response_text:
+            start = response_text.find('```') + 3
+            end = response_text.find('```', start)
+            if end != -1:
+                return response_text[start:end].strip()
+        
+        # Try to find JSON-like content between curly braces
+        start = response_text.find('{')
+        end = response_text.rfind('}')
+        if start != -1 and end != -1 and end > start:
+            return response_text[start:end+1].strip()
+        
+        # If no JSON structure found, return the original text
+        return response_text.strip()
+    
+    def _validate_json_structure(self, json_str: str) -> bool:
+        """
+        Validate if a string contains valid JSON structure
+        
+        Args:
+            json_str (str): String to validate
+            
+        Returns:
+            bool: True if valid JSON structure, False otherwise
+        """
+        try:
+            # Try to parse as JSON
+            json.loads(json_str)
+            return True
+        except json.JSONDecodeError:
+            return False
+    
+    def _validate_analysis_fields(self, analysis: Dict[str, Any]) -> bool:
+        """
+        Validate that all required fields are present in the analysis
+        
+        Args:
+            analysis (Dict[str, Any]): Analysis dictionary to validate
+            
+        Returns:
+            bool: True if all required fields are present, False otherwise
+        """
+        required_fields = ['classification', 'confidence', 'key_themes', 'analysis_notes', 'sentiment', 'credibility_score']
+        return all(field in analysis for field in required_fields)
+    
+    def _fix_missing_analysis_fields(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Fix missing fields in analysis with default values
+        
+        Args:
+            analysis (Dict[str, Any]): Analysis dictionary with missing fields
+            
+        Returns:
+            Dict[str, Any]: Fixed analysis dictionary
+        """
+        defaults = {
+            'classification': 'Other',
+            'confidence': 'medium',
+            'key_themes': [],
+            'analysis_notes': 'Analysis completed with default values for missing fields',
+            'sentiment': 'neutral',
+            'credibility_score': 0.5
+        }
+        
+        # Fill in missing fields with defaults
+        for field, default_value in defaults.items():
+            if field not in analysis or analysis[field] is None:
+                analysis[field] = default_value
+        
+        return analysis
     
     def _create_fallback_result(self, article: Dict[str, Any]) -> Dict[str, Any]:
         """
