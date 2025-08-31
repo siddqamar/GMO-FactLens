@@ -20,18 +20,17 @@ except ImportError:
 
 class NotionPublisher:
     """Agent responsible for publishing analysis results to Notion"""
-    
+
     def __init__(self):
         self.token = os.getenv('NOTION_TOKEN')
         self.parent_page_id = os.getenv('NOTION_PARENT_PAGE_ID')
         self.publish_to_notion = os.getenv('PUBLISH_TO_NOTION', 'false').lower() == 'true'
         self.create_db_each_run = os.getenv('NOTION_CREATE_DB_EACH_RUN', 'false').lower() == 'true'
-        
+
         if self.token and self.parent_page_id:
             try:
                 self.client = Client(auth=self.token)
-                if STREAMLIT_AVAILABLE:
-                    st.success("✅ Notion integration ready")
+                # Notion client initialized successfully (no UI message needed)
             except Exception as e:
                 if STREAMLIT_AVAILABLE:
                     st.error(f"❌ Failed to initialize Notion client: {str(e)}")
@@ -45,14 +44,14 @@ class NotionPublisher:
                     st.warning("⚠️ Notion integration disabled: Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID")
                 else:
                     print(f"WARNING: Notion integration disabled: Missing NOTION_TOKEN or NOTION_PARENT_PAGE_ID")
-    
+
     def create_run_database(self, run_name: str) -> Optional[str]:
         """
         Create a new full-page database under the parent page
-        
+
         Args:
             run_name (str): Name for this analysis run
-            
+
         Returns:
             Optional[str]: Database ID if successful, None otherwise
         """
@@ -60,7 +59,7 @@ class NotionPublisher:
             st.info(f"🔍 Creating Notion database for run: {run_name}")
         else:
             print(f"INFO: Creating Notion database for run: {run_name}")
-        
+
         if not self.client or not self.parent_page_id:
             error_msg = f"❌ Cannot create database: client={'✅ Ready' if self.client else '❌ Not ready'}, parent_page_id={'✅ Set' if self.parent_page_id else '❌ Missing'}"
             if STREAMLIT_AVAILABLE:
@@ -68,7 +67,7 @@ class NotionPublisher:
             else:
                 print(f"ERROR: {error_msg}")
             return None
-            
+
         try:
             # Create database properties
             properties = {
@@ -106,7 +105,7 @@ class NotionPublisher:
                 }},
                 "Analysis Date": {"date": {}}
             }
-            
+
             # Create the database
             database = self.client.databases.create(
                 parent={"page_id": self.parent_page_id},
@@ -114,13 +113,13 @@ class NotionPublisher:
                 properties=properties,
                 is_inline=False  # This makes it a full-page database
             )
-            
+
             if STREAMLIT_AVAILABLE:
                 st.success(f"✅ Created Notion database: {database['title'][0]['text']['content']}")
             else:
                 print(f"SUCCESS: Created Notion database: {database['title'][0]['text']['content']}")
             return database['id']
-            
+
         except APIResponseError as e:
             if e.code == "rate_limited":
                 warning_msg = "Rate limited by Notion API. Retrying in 1 second..."
@@ -144,21 +143,21 @@ class NotionPublisher:
             else:
                 print(f"ERROR: {error_msg}")
             return None
-    
+
     def publish_item_to_notion(self, item: Dict[str, Any], database_id: str) -> bool:
         """
         Insert a result item as a page in the Notion database
-        
+
         Args:
             item (Dict[str, Any]): The analysis result item
             database_id (str): The Notion database ID to publish to
-            
+
         Returns:
             bool: True if successful, False otherwise
         """
         if not self.client or not database_id:
             return False
-            
+
         try:
             # Helper function to safely get and format text content
             def safe_text_content(value, max_length=2000):
@@ -170,24 +169,24 @@ class NotionPublisher:
                 else:
                     text = str(value)
                 return text[:max_length] if text else ""
-            
+
             # Helper function to validate select field values
             def validate_select_value(value, field_name, default_value):
                 if value is None:
                     return default_value
-                
+
                 # Convert to string and handle boolean values
                 str_value = str(value).strip()
-                
+
                 # Define valid options for each select field
                 valid_options = {
                     "Fact Status": ["Fact", "Myth", "Unclear"],
-                    "Classification": ["Health", "Environmental", "Social economics", "Conspiracy theory", 
-                                    "Corporate control", "Ethical/religious issues", "Seed ownership", 
+                    "Classification": ["Health", "Environmental", "Social economics", "Conspiracy theory",
+                                    "Corporate control", "Ethical/religious issues", "Seed ownership",
                                     "Scientific authority", "Other"],
                     "Confidence": ["High", "Medium", "Low"]
                 }
-                
+
                 if field_name in valid_options:
                     # Check if the value matches any valid option (case-insensitive)
                     for option in valid_options[field_name]:
@@ -195,9 +194,9 @@ class NotionPublisher:
                             return option
                     # If no match found, return default
                     return default_value
-                
+
                 return str_value
-            
+
             # Prepare the page properties
             properties = {
                 "Title": {
@@ -228,7 +227,7 @@ class NotionPublisher:
                     "date": {"start": str(item.get('analysis_date', time.strftime('%Y-%m-%d')))}
                 }
             }
-            
+
             # Filter out empty properties to avoid API errors
             filtered_properties = {}
             for key, value in properties.items():
@@ -251,20 +250,20 @@ class NotionPublisher:
                         filtered_properties[key] = value
                 else:
                     filtered_properties[key] = value
-            
+
             # Create the page
             page = self.client.pages.create(
                 parent={"database_id": database_id},
                 properties=filtered_properties
             )
-            
+
             if STREAMLIT_AVAILABLE:
                 st.success(f"✅ Published item to Notion: {item.get('title', 'Untitled')[:50]}...")
             else:
                 print(f"SUCCESS: Published item to Notion: {item.get('title', 'Untitled')[:50]}...")
-            
+
             return True
-            
+
         except APIResponseError as e:
             if e.code == "rate_limited":
                 warning_msg = "Rate limited by Notion API. Retrying in 1 second..."
@@ -288,23 +287,23 @@ class NotionPublisher:
             else:
                 print(f"ERROR: {error_msg}")
             return False
-    
+
     def get_database_url(self, database_id: str) -> str:
         """
         Get the URL for a Notion database
-        
+
         Args:
             database_id (str): The Notion database ID
-            
+
         Returns:
             str: The URL to the database
         """
         return f"https://www.notion.so/{database_id.replace('-', '')}"
-    
+
     def is_enabled(self) -> bool:
         """
         Check if Notion publishing is enabled
-        
+
         Returns:
             bool: True if enabled, False otherwise
         """
