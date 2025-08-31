@@ -205,7 +205,7 @@ class StreamlitUI:
                     if 'analysis_date' not in item:
                         item['analysis_date'] = datetime.now().strftime('%Y-%m-%d')
                     
-                    if self.notion_publisher.publish_to_notion(item, database_id):
+                    if self.notion_publisher.publish_item_to_notion(item, database_id):
                         published_count += 1
                     else:
                         st.warning(f"Failed to publish item: {item.get('title', 'Untitled')}")

@@ -145,7 +145,7 @@ class NotionPublisher:
                 print(f"ERROR: {error_msg}")
             return None
     
-    def publish_to_notion(self, item: Dict[str, Any], database_id: str) -> bool:
+    def publish_item_to_notion(self, item: Dict[str, Any], database_id: str) -> bool:
         """
         Insert a result item as a page in the Notion database
         
@@ -160,42 +160,108 @@ class NotionPublisher:
             return False
             
         try:
+            # Helper function to safely get and format text content
+            def safe_text_content(value, max_length=2000):
+                if value is None:
+                    return ""
+                if isinstance(value, list):
+                    # Join list items with commas
+                    text = ", ".join(str(item) for item in value if item)
+                else:
+                    text = str(value)
+                return text[:max_length] if text else ""
+            
+            # Helper function to validate select field values
+            def validate_select_value(value, field_name, default_value):
+                if value is None:
+                    return default_value
+                
+                # Convert to string and handle boolean values
+                str_value = str(value).strip()
+                
+                # Define valid options for each select field
+                valid_options = {
+                    "Fact Status": ["Fact", "Myth", "Unclear"],
+                    "Classification": ["Health", "Environmental", "Social economics", "Conspiracy theory", 
+                                    "Corporate control", "Ethical/religious issues", "Seed ownership", 
+                                    "Scientific authority", "Other"],
+                    "Confidence": ["High", "Medium", "Low"]
+                }
+                
+                if field_name in valid_options:
+                    # Check if the value matches any valid option (case-insensitive)
+                    for option in valid_options[field_name]:
+                        if str_value.lower() == option.lower():
+                            return option
+                    # If no match found, return default
+                    return default_value
+                
+                return str_value
+            
             # Prepare the page properties
             properties = {
                 "Title": {
-                    "title": [{"text": {"content": str(item.get('title', 'Untitled'))[:2000]}}]
+                    "title": [{"text": {"content": safe_text_content(item.get('title', 'Untitled'), 2000)}}]
                 },
                 "URL": {
-                    "url": str(item.get('url', ''))
+                    "url": str(item.get('url', '')) if item.get('url') else ""
                 },
                 "Content": {
-                    "rich_text": [{"text": {"content": str(item.get('content', ''))[:2000]}}]
+                    "rich_text": [{"text": {"content": safe_text_content(item.get('content', ''), 2000)}}]
                 },
                 "Summary": {
-                    "rich_text": [{"text": {"content": str(item.get('summary', ''))[:2000]}}]
+                    "rich_text": [{"text": {"content": safe_text_content(item.get('summary', ''), 2000)}}]
                 },
                 "Claims": {
-                    "rich_text": [{"text": {"content": str(item.get('key_claims', []))[:2000]}}]
+                    "rich_text": [{"text": {"content": safe_text_content(item.get('key_claims', []), 2000)}}]
                 },
                 "Fact Status": {
-                    "select": {"name": str(item.get('fact_myth_status', 'Unclear'))}
+                    "select": {"name": validate_select_value(item.get('fact_myth_status'), "Fact Status", "Unclear")}
                 },
                 "Classification": {
-                    "select": {"name": str(item.get('classification', 'Other'))}
+                    "select": {"name": validate_select_value(item.get('classification'), "Classification", "Other")}
                 },
                 "Confidence": {
-                    "select": {"name": str(item.get('confidence', 'Medium'))}
+                    "select": {"name": validate_select_value(item.get('confidence'), "Confidence", "Medium")}
                 },
                 "Analysis Date": {
                     "date": {"start": str(item.get('analysis_date', time.strftime('%Y-%m-%d')))}
                 }
             }
             
+            # Filter out empty properties to avoid API errors
+            filtered_properties = {}
+            for key, value in properties.items():
+                if key == "Title":
+                    # Title is required, always include it
+                    filtered_properties[key] = value
+                elif key == "URL":
+                    # URL can be empty string
+                    filtered_properties[key] = value
+                elif key == "Analysis Date":
+                    # Date is required, always include it
+                    filtered_properties[key] = value
+                elif isinstance(value, dict) and "rich_text" in value:
+                    # Only include rich_text if it has content
+                    if value["rich_text"][0]["text"]["content"].strip():
+                        filtered_properties[key] = value
+                elif isinstance(value, dict) and "select" in value:
+                    # Only include select if it has a valid name
+                    if value["select"]["name"]:
+                        filtered_properties[key] = value
+                else:
+                    filtered_properties[key] = value
+            
             # Create the page
             page = self.client.pages.create(
                 parent={"database_id": database_id},
-                properties=properties
+                properties=filtered_properties
             )
+            
+            if STREAMLIT_AVAILABLE:
+                st.success(f"✅ Published item to Notion: {item.get('title', 'Untitled')[:50]}...")
+            else:
+                print(f"SUCCESS: Published item to Notion: {item.get('title', 'Untitled')[:50]}...")
             
             return True
             
@@ -207,7 +273,7 @@ class NotionPublisher:
                 else:
                     print(f"WARNING: {warning_msg}")
                 time.sleep(1)
-                return self.publish_to_notion(item, database_id)  # Retry once
+                return self.publish_item_to_notion(item, database_id)  # Retry once
             else:
                 error_msg = f"Error publishing to Notion: {e.message}"
                 if STREAMLIT_AVAILABLE:
