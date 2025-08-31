@@ -56,7 +56,7 @@ class StreamlitUI:
             
             # Analysis options
             st.subheader("Analysis Options")
-            use_crewai = st.checkbox("Use CrewAI Framework", value=True, 
+            use_crewai = st.checkbox("Use CrewAI Framework", value=False, 
                                    help="Use the full CrewAI workflow instead of direct processing")
             max_results = st.slider("Maximum Results", min_value=5, max_value=20, value=10,
                                   help="Maximum number of articles to analyze")
